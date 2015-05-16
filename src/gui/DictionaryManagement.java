@@ -28,7 +28,6 @@ import logic.LoadDictionary;
 import logic.PopulateDictionary;
 import logic.RemoveWord;
 import logic.SaveDictionary;
-import logic.SearchWord;
 import logic.WordMatcher;
 import model.Dictionary;
 
@@ -144,11 +143,11 @@ public class DictionaryManagement {
 				break;
 			case 1 :
 				RemoveWord r = new RemoveWord(dic);
-				r.Operation(textField.getText(), "");
+				r.Operation(textField.getText(), "null");
 				break;
 			case 2 :
 				WordMatcher w = new WordMatcher(dic);
-				TreeMap<String,String> temp = w.Operation(textField.getText(), "");
+				TreeMap<String,String> temp = w.Operation(textField.getText(), "null");
 				Object data[][] = new Object[temp.size()][2];
 				int n = 0;
 				maxWidthColumn1 = Integer.MIN_VALUE;
