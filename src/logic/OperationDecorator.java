@@ -28,8 +28,6 @@ public abstract class OperationDecorator {
 		{
 			if((entry.getValue().equals(""))||(entry.getValue()==null))
 				return false;
-			if(entry.getKey().toString().matches(entry.getValue().toString()))
-				return false;
 		}
 		return true;
 	}
