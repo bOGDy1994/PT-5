@@ -15,7 +15,7 @@ public class WordMatcher extends OperationDecorator {
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
 		// TODO Auto-generated method stub
-		assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+		assert((word.equals("")&&definition.equals(""))||((!word.equals(""))&&(!definition.equals(""))));
 		if(isWellFormed())
 		{
 			TreeMap<String, String> res = new TreeMap<String, String>();
