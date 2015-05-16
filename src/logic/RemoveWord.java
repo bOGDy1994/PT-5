@@ -13,11 +13,18 @@ public class RemoveWord extends OperationDecorator {
 
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
-		TreeMap<String, String> temp = dic.getDic();
-		String test = temp.get(word);
-		if(test != null)
-			temp.remove(word);
-		dic.setDic(temp);
+		assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+		if(isWellFormed())
+		{
+			TreeMap<String, String> temp = dic.getDic();
+			TreeMap<String, String> temp2 = temp;
+			String test = temp.get(word);
+			if(test != null)
+				temp.remove(word);
+			dic.setDic(temp);
+			if(!isWellFormed())
+				dic.setDic(temp2);
+		}
 		return null;
 	}
 

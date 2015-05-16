@@ -16,18 +16,22 @@ public class SaveDictionary extends OperationDecorator {
 
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
-		 try
-         {
-            FileOutputStream fileOut =
-            new FileOutputStream("dicstate.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(dic.getDic());
-            out.close();
-            fileOut.close();
-         }catch(IOException i)
-         {
-             i.printStackTrace();
-         }
+		assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+		if(isWellFormed())
+		{
+			try
+			{
+				FileOutputStream fileOut =	new FileOutputStream("dicstate.ser");
+				ObjectOutputStream out = new ObjectOutputStream(fileOut);
+				out.writeObject(dic.getDic());
+				out.close();
+				fileOut.close();
+			}
+			catch(IOException i)
+			{
+				i.printStackTrace();
+			}
+		}
 		return null;
 	}
 

@@ -15,12 +15,17 @@ public class WordMatcher extends OperationDecorator {
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
 		// TODO Auto-generated method stub
-		TreeMap<String, String> res = new TreeMap<String, String>();
-		TreeMap<String, String> temp = dic.getDic();
-		for(Entry<String, String> entry : temp.entrySet())
-			if(entry.getKey().matches(word))
-				res.put(entry.getKey(), entry.getValue());
-		return res;
+		assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+		if(isWellFormed())
+		{
+			TreeMap<String, String> res = new TreeMap<String, String>();
+			TreeMap<String, String> temp = dic.getDic();
+			for(Entry<String, String> entry : temp.entrySet())
+				if(entry.getKey().matches(word))
+					res.put(entry.getKey(), entry.getValue());
+			return res;
+		}
+		return null;
 	}
 
 }

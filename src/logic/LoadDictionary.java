@@ -16,22 +16,24 @@ public class LoadDictionary extends OperationDecorator {
 
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
-		TreeMap<String, String> temp;
-		try{
-			 FileInputStream fileIn = new FileInputStream("dicstate.ser");
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         temp = (TreeMap<String,String>)in.readObject();
-	         dic.setDic(temp);
-	         in.close();
-	         fileIn.close();
-		}
-		catch(IOException e)
+		if(isWellFormed())
 		{
-			//e.printStackTrace();
-		}
-		catch(ClassNotFoundException e)
-		{
-			
+			assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+			TreeMap<String, String> temp;
+			try{
+				FileInputStream fileIn = new FileInputStream("dicstate.ser");
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				temp = (TreeMap<String,String>)in.readObject();
+				dic.setDic(temp);
+				in.close();
+				fileIn.close();
+			}
+			catch(IOException e)
+			{
+			}
+			catch(ClassNotFoundException e)
+			{	
+			}
 		}
 		return null;
 	}

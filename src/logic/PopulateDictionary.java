@@ -18,22 +18,25 @@ public class PopulateDictionary extends OperationDecorator {
 	@Override
 	public TreeMap<String, String> Operation(String word, String definition) {
 		// TODO Auto-generated method stub
-		String temp;
-		Set<String> names;
-		TreeMap<String, String> InitialList = new TreeMap<String, String>();
-		try{
-			BufferedReader b = new BufferedReader(new FileReader("dicinit.json"));
-			temp = b.readLine();
-			JSONObject obj = new JSONObject(temp);
-			names = obj.keySet();
-			for(String it : names)
-				InitialList.put(it.toString(), obj.getString(it.toString()));
-			dic.setDic(InitialList);	
-		}
-		catch(IOException e)
+		assert((word.equals("")&&definition.equals(""))||(!word.equals("")&&(!definition.equals(""))));
+		if(isWellFormed())
 		{
-			//System.out.println("ioexc");
-			e.printStackTrace();
+			String temp;
+			Set<String> names;
+			TreeMap<String, String> InitialList = new TreeMap<String, String>();
+			try{
+				BufferedReader b = new BufferedReader(new FileReader("dicinit.json"));
+				temp = b.readLine();
+				JSONObject obj = new JSONObject(temp);
+				names = obj.keySet();
+				for(String it : names)
+					InitialList.put(it.toString(), obj.getString(it.toString()));
+				dic.setDic(InitialList);
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}
